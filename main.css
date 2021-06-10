@@ -1,0 +1,28 @@
+body{
+    background-color: #9CC5F0 ;
+    background-image : url("defaultUser/images/backgrounds/canvas.gif");
+    margin: 8px;
+    
+}
+
+a:link{
+    color: #B91806;
+}
+
+a:visited{
+    color: #996600;
+}
+
+a:active{
+    color: #996600;
+}
+
+#element27{
+
+    position: absolute;
+    top: 14px;
+    left: 15px;
+    width: 127px;
+    height: 128px;
+    z-index: 18;
+}
