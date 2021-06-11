@@ -241,7 +241,6 @@ a:active{
 .font{
     font-size: 1px;
     line-height: 1px;
-    text-align: left;
     
 }
 
@@ -343,6 +342,55 @@ a:active{
 #element80 > div{
     overflow: hidden; height: 648px; width: 676px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: none;
 }
-#element7 > div{
+#element13{
+    position: absolute; top: 7960px; left: 108px; width: 316px; height: 415px; z-index: 8;
+}
+#element13 > div{
+    overflow: hidden; height: 415px; width: 316px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: none;
+}
+#element9{
+    position: absolute; top: 7973px; left: 471px; width: 513px; height: 315px; z-index: 5;
+}
+#element10{
+    position: absolute; top: 8485px; left: 116px; width: 411px; height: 248px; z-index: 6;
+}
+#element11{
+    position: absolute; top: 8355px; left: 637px; width: 366px; height: 515px; z-index: 7;
+}
+#element11 > div{
+    overflow: hidden; height: 511px; width: 362px; border: 2px solid #52A8EC; border-radius: 2px; box-shadow: 4px 4px 10px #505050;
+}
+#element40{
+    position: absolute; top: 8932px; left: 207px; width: 769px; height: 1556px; z-index: 25;
+}
+#element40 > div{
+    height: 1542px; padding: 5px; border-width: 2px; border-color: #406AB0; border-style: solid; background-color: #E2D2C3;
+}
+#element40 > .font{
+ text-align: center;
+}
+#element57{
+    position: absolute; top: 10684px; left: 352px; width: 500px; height: 381px; z-index: 35;
+}
+#element57 > div{
+    overflow: hidden; height: 381px; width: 500px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: 0px 4px 10px #505050;
+}
+#element58{
+    position: absolute; top: 11095px; left: 358px; width: 491px; height: 100px; z-index: 36;
+}
+#element14{
+    position: absolute; top: 11289px; left: 203px; width: 774px; height: 1415px; z-index: 9;
+}
+#element14 > div{
+    height: 1397px; padding: 5px; border-width: 4px; border-color: #C3DCE8; border-style: solid; background-color: #C9E9FA;
+}
+#element52{
+    position: absolute; top: 12197px; left: 306px; width: 574px; height: 486.841796875px; z-index: 32;
+}
+#element53{
+    position: absolute; top: 11963px; left: 299px; width: 583px; height: 203px; z-index: 33;
+}
 
+#element47{
+    position: absolute; top: 12997px; left: 392px; width: 436px; height: 239px; z-index: 29;
 }
