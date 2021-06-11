@@ -125,5 +125,140 @@ a:active{
 }
 
 #element30{
+    position: absolute; 
+    top: 1089px;
+    left: 393px; 
+    width: 463px;
+    height: 56px;
+    z-index: 21;
+}
+
+#element81{
+    position: absolute; 
+    top: 1159px; 
+    left: 286px; 
+    width: 697px; 
+    height: 615px;
+     z-index: 40;
+}
+
+#element81 > div {
+    overflow: hidden; 
+    height: 611px; 
+    width: 693px;
+    border: 2px solid #52A8EC; 
+    border-radius: 2px;
+    box-shadow: 0px 4px 10px #505050;
+}
+
+#element28{
+    position: absolute; 
+    top: 1939px;
+    left: 310px;
+    width: 615px;
+    height: 134px;
+    z-index: 19;
+}
+#element28 > div {
+    height: 120px;
+    padding: 5px;
+    border-width: 2px;
+    border-color: #000066;
+    border-style: solid; 
+    background-color: #FFFFFF;
+}
+
+#element28 > div > div{
+    font-size: 1px;
+    line-height: 1px;
+    text-align: center;
+}
+
+#element76{
+    position: absolute; 
+    top: 1902px;
+     left: 281px; 
+     width: 70px; 
+     height: 70px; 
+     z-index: 38;
+}
+
+#element76 > div {
+    overflow: hidden;
+    height: 70px;
+    width: 70px;
+    border: 0px solid #52A8EC; 
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+#element15{
+    position: absolute; 
+    top: 2126px;
+    left: 408px; 
+    width: 420px; 
+    height: 491px; 
+    z-index: 10;
+}
+
+#element15 > div{
+    overflow: hidden;
+    height: 487px;
+    width: 416px; 
+    border: 2px solid #52A8EC; 
+    border-radius: 2px;
+    box-shadow: 0px 4px 10px #505050;
+}
+
+#element32{
+    position: absolute;
+    top: 2632px;
+    left: 380px;
+    width: 484px;
+    height: 52px;
+    z-index: 23;
+}
+
+#element32 > div {
+    height: 38px; 
+    padding: 5px;
+    border-width: 2px;
+    border-color: #000066; 
+    border-style: solid;
+    background-color: transparent;
+}
+
+#element3{
+    position: absolute;
+    top: 2747px; 
+    left: 203px;
+    width: 832px;
+    height: 1038px; 
+    z-index: 0;
+}
+
+
+.font{
+    font-size: 1px;
+    line-height: 1px;
+    text-align: left;
     
+}
+
+#element4{
+    position: absolute;
+    top: 3831px;
+    left: 293px;
+    width: 639px;
+    height: 715px;
+    z-index: 1;
+}
+
+#element4 > div{
+    overflow: hidden;
+     height: 711px;
+      width: 635px;
+       border: 2px solid #52A8EC; 
+       border-radius: 2px; 
+       box-shadow: 0px 4px 10px #505050;
 }
