@@ -94,3 +94,36 @@ a:active{
     box-shadow: none;
 }
 
+#element45{
+    position: absolute;
+    top: 659px; 
+    left: 262px; 
+    width: 778px;
+    height: 254px;
+    z-index: 27;
+}
+
+#element45 > div{
+    font-size: 1px;
+    line-height: 1px;
+    text-align: center;
+    display: block;
+}
+#element29{
+    position: absolute; 
+    top: 1013px;
+     left: 283px; 
+     width: 687px;
+     height: 82px; 
+     z-index: 20;
+}
+
+#element29 > div {
+    font-size: 1px;
+    line-height: 1px;
+    text-align: center;
+}
+
+#element30{
+    
+}
