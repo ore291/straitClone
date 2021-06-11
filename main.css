@@ -262,3 +262,87 @@ a:active{
        border-radius: 2px; 
        box-shadow: 0px 4px 10px #505050;
 }
+
+#element6{
+    position: absolute;
+    top: 4652px;
+    left: 565px;
+    width: 483px;
+    height: 284px;
+    z-index: 3;
+}
+
+#element6 > div{
+    overflow: hidden;
+    height: 280px; 
+    width: 479px;
+    border: 2px solid #52A8EC; 
+    border-radius: 2px;
+    box-shadow: 4px 4px 10px #505050;
+}
+
+#element7{
+    position: absolute;
+    top: 4686px;
+    left: 221px;
+    width: 311px;
+    height: 219px;
+    z-index: 4;
+}
+
+#element38{
+    position: absolute;
+    top: 5076px;
+    left: 226px; 
+    width: 806px;
+    height: 545px;
+    z-index: 24;
+}
+#element38 > div{
+    overflow: hidden;
+    height: 539px;
+    width: 800px;
+    border: 3px solid #52A8EC;
+    border-radius: 1px;
+    box-shadow: 0px 4px 10px #505050;
+}
+#element18{
+    position: absolute; top: 5718px; left: 93px; width: 336px; height: 310px; z-index: 12;
+}
+#element18 > div{
+    overflow: hidden; height: 310px; width: 336px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: none;
+}
+#element19{
+    position: absolute; top: 5714px; left: 785px; width: 334px; height: 319px; z-index: 13;
+}
+
+#element19 > div{
+    overflow: hidden; height: 319px; width: 334px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: none;
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
+#element7 > div{
+
+}
