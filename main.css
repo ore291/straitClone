@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Allerta|Arvo|Bitter|Bree+Serif|Cabin|Cookie|Domine|Droid+Sans|Droid+Serif|Grand+Hotel|Josefin+Slab|Lato|Lobster|Lora|Merriweather|Monda|Montserrat|Offside|Old+Standard+TT|Open+Sans|Open+Sans+Condensed|Oswald|Playfair+Display|PT+Sans|PT+Serif|Raleway|Roboto|Roboto+Condensed|Roboto+Slab|Sanchez|Source+Sans+Pro|Tangerine|Ubuntu|Vollkorn|Yanone+Kaffeesatz');
+
 body{
     background-color: #9CC5F0 ;
     background-image : url("defaultUser/images/backgrounds/canvas.gif");
@@ -26,3 +28,69 @@ a:active{
     height: 128px;
     z-index: 18;
 }
+#element92{
+    position: absolute;
+    top: 4px;
+    left: 325px;
+    width: 657px;
+    height: 115px;
+    z-index: 44;
+}
+
+.box{
+    height: 99px;
+    padding: 5px;
+    border-width: 3px;
+    border: solid  #B91806;
+    background-color: #FFFFFF;      
+}
+
+.box.box-text{
+    font-size: 1px;
+    line-height: 1px;
+    text-align: left;
+}
+
+#element91{
+    position: absolute;
+    top: 111px;
+    left: 179px;
+    width: 800px;
+    height: 107px;
+    z-index: 43;
+    display: block;
+}
+
+#element91 > div{
+    overflow: hidden;
+    height: 107px;
+    width: 800px;
+    border: 0px solid  #52A8EC;
+    border-radius: 0px;
+    box-shadow: none;
+}
+#element91 > div > img{
+    height: 107px;
+    width: 800px;
+    display: block;
+    border-radius: 0px;
+}
+
+#element87{
+    position: absolute;
+    top: 230px;
+    left: 332px;
+    width: 647px;
+    height: 398px;
+    z-index: 42;
+}
+
+#element87 > div {
+    overflow: hidden;
+    height: 398px;
+    width: 647px;
+    border: 0px solid #52A8EC; 
+    border-radius: 0px;
+    box-shadow: none;
+}
+
