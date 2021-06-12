@@ -28,7 +28,7 @@ Vue.component('vue-calculator', {
       </div>
         </div>
         <div class="d-grid gap-2">
-  <button class="btn btn-primary" type="button">Continue </button>
+  <button class="btn btn-primary mb-2" type="button">Continue </button>
 </div>
       </div>
     </div>
