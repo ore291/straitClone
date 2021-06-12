@@ -3,7 +3,7 @@ let bpiDefault = { change: '', code: '' };
 Vue.component('vue-calculator', {
     template: `
     <div>
-    <div class="container">
+    <div class="container ">
       <div class="row" >
         <div class="col">
           <div class="price-holder">
@@ -16,20 +16,20 @@ Vue.component('vue-calculator', {
         </div>
       </div>
       <p><center>Enter Donation amount: </center></p>
-      <div class="row align-items-center ">
-        <div class="col-sm-10 col-md-6 ml-auto">
-          <div class="input-group">
-            <div class="input-group">
-              <input type="text"
-                     class="form-control "
-                     placeholder="0.0"
-                     v-model="inputValue">
-              
-            </div>
-            <span class="underline"></span>
-            <span>{{conversion}}</span>
-          </div>
+      <div class="d-flex row align-items-center justify-content-center ">
+        <div class="col-sm-10 col-md-6  mb-5">
+        <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" v-model='inputValue'>
+      </div>
+      
+      <div class="input-group">
+        <input type="text" readonly class="form-control-plaintext" v-model='conversion' disabled>
+      </div>
         </div>
+        <div class="d-grid gap-2">
+  <button class="btn btn-primary" type="button">Continue </button>
+</div>
       </div>
     </div>
   </div>`,
