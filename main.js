@@ -23,12 +23,13 @@ Vue.component('vue-calculator', {
         <input type="number" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" v-model='inputValue'>
       </div>
       
-      <div class="input-group">
-        <input type="text" readonly class="form-control-plaintext" v-model='conversion' disabled>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Value</span>
+        <input type="text" class="form-control"  v-model='conversion' disabled>
       </div>
         </div>
         <div class="d-grid gap-2">
-  <button class="btn btn-primary mb-2" type="button">Continue </button>
+  <button class="btn btn-primary mb-2"  type="button" @click='bclick'>Continue</button>
 </div>
       </div>
     </div>
@@ -59,6 +60,11 @@ Vue.component('vue-calculator', {
         clearInterval(this.interval);
     },
     methods: {
+
+        bclick(event) {
+            console.log('clicked')
+            this.$emit('clicked', this.inputValue)
+        },
         getUpdatedPrice() {
             this.loading = true;
             axios.get(this.endpoint + 'currentprice/' + this.selectedCurrency + '.json').
@@ -179,6 +185,7 @@ new Vue({
         wallet: {},
         statsCache: {},
         stats: {},
+        amountD: 0
     },
 
     // computed methods 
@@ -197,6 +204,14 @@ new Vue({
     methods: {
 
         // select active tab wallet 
+        cclick(data) {
+            this.amountD = data;
+            var triggerEl = document.querySelector('#profile-tab');
+            console.log(triggerEl);
+            var tab = new bootstrap.Tab(triggerEl)
+            tab.show();
+
+        },
         selectWallet(symbol) {
             let wallet = this.cryptoWallets.filter(w => w.symbol === symbol).shift();
             if (!wallet) return;
