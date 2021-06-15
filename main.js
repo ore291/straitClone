@@ -29,7 +29,7 @@ Vue.component('vue-calculator', {
       </div>
         </div>
         <div class="d-grid gap-2">
-  <button class="btn btn-primary mb-2"  type="button" @click='bclick'>Continue</button>
+  <button class="btn btn-primary mb-2" v-bind:class="{ disabled: isActive }" type="button" @click='bclick' >Continue</button>
 </div>
       </div>
     </div>
@@ -111,6 +111,13 @@ Vue.component('vue-calculator', {
                     return;
                 }
                 this.value = Number(value);
+            }
+        },
+        isActive(){
+            if (this.value === null) {
+                return true
+            } else {
+                return false
             }
         },
 
@@ -205,7 +212,7 @@ new Vue({
 
         // select active tab wallet 
         cclick(data) {
-            this.amountD = data;
+            this.amountD = `$${data}`;
             var triggerEl = document.querySelector('#profile-tab');
             console.log(triggerEl);
             var tab = new bootstrap.Tab(triggerEl)

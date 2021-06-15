@@ -775,7 +775,7 @@ t" align="center">
 								  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">1. PLEDGE</button>
 								</li>
 								<li class="nav-item" role="presentation">
-								  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">2. INFO</button>
+								  <button class="nav-link" id="profile-tab"  data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">2. INFO</button>
 								</li>
 								<li class="nav-item" role="presentation">
 								  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">3. DONATE</button>
@@ -788,21 +788,27 @@ t" align="center">
 									<vue-calculator @clicked='cclick'></vue-calculator>
 									</div>
 								<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-									<div class="input-group">
-										<span class="input-group-text">First name</span>
-										<input type="text" aria-label="First name" class="form-control">
-										<span class="input-group-text">Last name</span>
-										<input type="text" aria-label="Last name" class="form-control">
-									  </div>
-									  <div class="input-group flex-nowrap mt-2">
-										<span class="input-group-text" id="addon-wrapping">Email address</span>
-										<input type="email" class="form-control" aria-label="email" aria-describedby="addon-wrapping">
-									  </div>
-									  <div class="input-group mt-2 mb-3">
-										<span class="input-group-text">Amount Pledged</span>
-										<input type="text" id="disabledTextInput" class="form-control"  v-model='amountD' disabled>
-									  </div>
-								</div>
+									<form action="connect.php" method="post">
+										<div class="input-group">
+											<span class="input-group-text">First name</span>
+											<input type="text" aria-label="First name" class="form-control">
+											<span class="input-group-text">Last name</span>
+											<input type="text" aria-label="Last name" class="form-control">
+										  </div>
+										  <div class="input-group flex-nowrap mt-2">
+											<span class="input-group-text" id="addon-wrapping">Email address</span>
+											<input type="email" class="form-control" aria-label="email" aria-describedby="addon-wrapping">
+										  </div>
+										  <div class="input-group mt-2 mb-3">
+											<span class="input-group-text">Amount Pledged</span>
+											<input type="text" id="disabledTextInput" class="form-control"  v-model='amountD' disabled>
+										  </div>
+										  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+											<button type="button" class="btn btn-danger">PREVIOUS</button>
+											<button type="button" class="btn btn-success ml-5">CONTINUE</button>
+										  </div>
+									</div>
+									</form>
 								<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><section class="tabs-info">
 									<!-- qr image -->
 									<div class="tabs-info-row">
