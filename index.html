@@ -7,18 +7,18 @@
 	<title>Jenifer Strait Memorial Foundation</title>
 	<meta name="description"
 		content="The original Jenifer Strait Memorial Foundation site; Daughter of Norma and George Strait, Loving Sister to Bubba. These are the facts, and the story.">
-	
+
 
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css?family=Abril+Fatface|Allerta|Arvo|Bitter|Bree+Serif|Cabin|Cookie|Domine|Droid+Sans|Droid+Serif|Grand+Hotel|Josefin+Slab|Lato|Lobster|Lora|Merriweather|Monda|Montserrat|Offside|Old+Standard+TT|Open+Sans|Open+Sans+Condensed|Oswald|Playfair+Display|PT+Sans|PT+Serif|Raleway|Roboto|Roboto+Condensed|Roboto+Slab|Sanchez|Source+Sans+Pro|Tangerine|Ubuntu|Vollkorn|Yanone+Kaffeesatz">
 	<link rel="stylesheet" href="font_styles.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-	
-	
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="bitcoin.css">
-	
+
 </head>
 
 <body>
@@ -772,121 +772,176 @@ t" align="center">
 						<div class="card-header">
 							<ul class="nav nav-tabs" id="myTab" role="tablist">
 								<li class="nav-item" role="presentation">
-								  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">1. PLEDGE</button>
+									<button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+										data-bs-target="#home" type="button" role="tab" aria-controls="home"
+										aria-selected="true">1. PLEDGE</button>
 								</li>
 								<li class="nav-item" role="presentation">
-								  <button class="nav-link" id="profile-tab"  data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">2. INFO</button>
+									<button class="nav-link" id="profile-tab" data-bs-target="#profile" type="button"
+										role="tab" aria-controls="profile" aria-selected="false">2. INFO</button>
 								</li>
 								<li class="nav-item" role="presentation">
-								  <button class="nav-link" id="contact-tab"  data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">3. DONATE</button>
+									<button class="nav-link" id="contact-tab" data-bs-target="#contact" type="button"
+										role="tab" aria-controls="contact" aria-selected="false">3. DONATE</button>
 								</li>
-							  </ul>
+							</ul>
 						</div>
 						<div class="card-body">
 							<div class="tab-content" id="myTabContent">
-								<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+								<div class="tab-pane fade show active" id="home" role="tabpanel"
+									aria-labelledby="home-tab">
 									<vue-calculator @clicked='cclick'></vue-calculator>
-									</div>
+								</div>
 								<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-									
+									<form action="" @submit.prevent='addRecord()'>
 										<div class="input-group">
 											<span class="input-group-text">First name</span>
-											<input type="text" aria-label="First name" class="form-control" v-model='firstname'>
+											<input type="text" aria-label="First name" class="form-control"
+												v-model='firstname' required>
 											<span class="input-group-text">Last name</span>
-											<input type="text" aria-label="Last name" class="form-control" v-model='lastname'>
-										  </div>
-										  <div class="input-group flex-nowrap mt-2">
+											<input type="text" aria-label="Last name" class="form-control"
+												v-model='lastname' required>
+										</div>
+										<div class="input-group flex-nowrap mt-2">
 											<span class="input-group-text" id="addon-wrapping">Email address</span>
-											<input type="email" class="form-control" aria-label="email" aria-describedby="addon-wrapping" v-model='email'>
-										  </div>
-										  <div class="input-group mt-2 mb-3">
+											<input type="email" class="form-control" aria-label="email"
+												aria-describedby="addon-wrapping" v-model='email' required>
+										</div>
+										<div class="input-group mt-2 mb-3">
 											<span class="input-group-text">Amount Pledged</span>
-											<input type="text" id="disabledTextInput" class="form-control"  v-model='amountD' disabled>
-										  </div>
-										  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-											<button type="button" class="btn btn-danger" @click='fclick()' >PREVIOUS</button>
-											<button type="button" class="btn btn-success ml-5" @click='addRecord()'>CONTINUE</button>
-										  </div>
-									</div>
-								<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><section class="tabs-info">
-									<!-- qr image -->
-									<div class="tabs-info-row">
-									 <div class="tabs-info-qr">
-									  <img :src="getQrImage()" :alt="wallet.name" />
-									 </div>
-									 <div class="tabs-info-details">
-									  <div class="tabs-info-title">Donate {{ wallet.name }}</div>
-									  <div class="tabs-info-warn">Send only {{ wallet.name }} ({{ wallet.symbol }}) to this deposit address. Sending any other coin or token to this address may result in the loss of your donation, Thanks!</div>
-									 </div>
-									</div>
-									<!-- address input -->
-									<div class="tabs-info-input">
-									 <span>Address</span>
-									 <input type="text" :value="wallet.address" />
-									 <button type="button" @click="copyText( wallet.address )">
-									  <span v-if="wallet.copied">✔ Copied</span>
-									  <span v-else>✚ Copy</span>
-									 </button>
-									</div>
-									<!-- coin stats -->
-									<div class="btn-group mt-2" role="group" aria-label="Basic mixed styles example">
-										<button type="button" class="btn btn-danger" @click='fclick()' >START OVER</button>
-									  </div>
-								   </section></div>
-							  </div>
+											<input type="text" id="disabledTextInput" class="form-control"
+												v-model='amountD' disabled>
+										</div>
+										<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+											<button type="button" class="btn btn-danger"
+												@click='fclick()'>PREVIOUS</button>
+											<button type="submit" class="btn btn-success ml-5">CONTINUE</button>
+										</div>
+									</form>
+
+								</div>
+								<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+									<section class="tabs-info">
+										<!-- qr image -->
+										<div class="tabs-info-row">
+											<div class="tabs-info-qr">
+												<img :src="getQrImage()" :alt="wallet.name" />
+											</div>
+											<div class="tabs-info-details">
+												<div class="tabs-info-title">Donate {{ wallet.name }}</div>
+												<div class="tabs-info-warn">Send only {{ wallet.name }}
+													({{ wallet.symbol }}) to this deposit address. Sending any other
+													coin or token to this address may result in the loss of your
+													donation, Thanks!</div>
+											</div>
+										</div>
+										<p>Use the address below to donate
+											{{bvalue}} from your wallet</p>
+										<!-- address input -->
+										<div class="tabs-info-input">
+											<span>Address</span>
+											<input type="text" :value="wallet.address" />
+											<button type="button" @click="copyText( wallet.address )">
+												<span v-if="wallet.copied">✔ Copied</span>
+												<span v-else>✚ Copy</span>
+											</button>
+										</div>
+										<!-- coin stats -->
+										<div class="btn-group mt-2" role="group"
+											aria-label="Basic mixed styles example">
+											<button type="button" class="btn btn-danger" @click='fclick()'>START
+												OVER</button>
+										</div>
+									</section>
+								</div>
+							</div>
 						</div>
-					  </div>
+						<div>
+							<table id="table" ref='table' class="table table-striped" style="width:100%">
+								<thead>
+									<th>ID</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Email</th>
+									<th>Amount Donated</th>
+								</thead>
+								<tbody>
+
+									<tr v-for="(item, index) in donators" :key="index">
+										<td>{{item.id}}</td>
+										<td>{{item.firstname}}</td>
+										<td>{{item.lastname}}</td>
+										<td>{{item.email}}</td>
+										<td>${{item.amount}}</td>
+									</tr>
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 					<!-- end -->
-				<div >
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br></font>
+					<div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br>
+							</font>
+						</div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br>
+							</font>
+						</div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>*The above
+									address is confirmed annually with the George Strait Production Company as being the
+									current address for donations. </b><br></font>
+						</div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>The donation
+									address was confirmed correct on July 1, 2019, and </b><br></font>
+						</div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>updated here
+									on
+									July 2, 2019. </b><br></font>
+						</div>
+						<div class="font" align="center"></div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>You will
+									receive
+									a charitable donation confirmation letter.  </b><br></font>
+						</div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size12 Georgia12"><b></b><br>
+							</font>
+						</div>
+						<div class="font" align="center"></div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br>
+							</font>
+						</div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br>
+							</font>
+						</div>
+						<div class="font" align="center">
+							<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br>
+							</font>
+						</div>
+						<div class="font" align="center">
+							<font face="Grand Hotel" color="#000066" class="size20 GrandHotel20"><u>Thank you for
+									remembering Jenifer.</u><br></font>
+						</div>
+						<div class="font" align="center">
+							<font face="Grand Hotel" color="#3333cc" class="size18 GrandHotel18"><u><b></b></u><br>
+							</font>
+						</div>
+						<div class="font" align="center">
+							<font face="'Palatino Linotype', serif" color="#3333CC" class="size14 PalatinoLinotype14">
+								<b> 
+									 __________________________________________________</b><br></font>
+						</div>
 					</div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>*The above
-								address is confirmed annually with the George Strait Production Company as being the
-								current address for donations. </b><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>The donation
-								address was confirmed correct on July 1, 2019, and </b><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>updated here on
-								July 2, 2019. </b><br></font>
-					</div>
-					<div class="font" align="center"></div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b>You will receive
-								a charitable donation confirmation letter.  </b><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size12 Georgia12"><b></b><br></font>
-					</div>
-					<div class="font" align="center"></div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Georgia, Times, serif" color="#000066" class="size16 Georgia16"><b></b><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Grand Hotel" color="#000066" class="size20 GrandHotel20"><u>Thank you for
-								remembering Jenifer.</u><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="Grand Hotel" color="#3333cc" class="size18 GrandHotel18"><u><b></b></u><br></font>
-					</div>
-					<div class="font" align="center">
-						<font face="'Palatino Linotype', serif" color="#3333CC" class="size14 PalatinoLinotype14"><b> 
-								 __________________________________________________</b><br></font>
-					</div>
-				</div>
 				</div>
 			</div><!-- </hs:element14> -->
 			<!-- <hs:element52> -->
@@ -991,7 +1046,116 @@ t" align="center">
 					</font>
 				</div>
 			</div><!-- </hs:element53> -->
-			<div id="element23" style="position: absolute; top: 12105px; left: 694px; width: 35px; height: 40px; z-index: 17;"><div style="overflow: hidden; height: 40px; width: 35px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: none;"><img height="40" width="35" style="display: block; border-radius: 0px;" title="" alt="" src="files/monarch.gif"></div></div>
+			<div id="element23"
+				style="position: absolute; top: 12105px; left: 694px; width: 35px; height: 40px; z-index: 17;">
+				<div
+					style="overflow: hidden; height: 40px; width: 35px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: none;">
+					<img height="40" width="35" style="display: block; border-radius: 0px;" title="" alt=""
+						src="files/monarch.gif"></div>
+			</div>
+
+			<div id="element75"
+				style="position: absolute; top: 13550px; left: 399px; width: 418px; height: 42px; z-index: 37;">
+				<div
+					style="height: 40px; padding: 7px; border-width: 2px; border-color: #406AB0; border-style: solid; background-color: transparent;">
+					<div style="font-size: 1px; line-height: 1px;">
+						<font face="'Arial Black', Arial, Helvetica, sans-serif" color="#B91806"
+							class="size16 ArialBlack16"><a target="_self" href="index.html">RETURN to STRAITFEVER
+								WEBSITE</a><br></font>
+					</div>
+				</div>
+			</div>
+
+			<div id="element50"
+				style="position: absolute; top: 13600px; left: 394px; width: 400px; height: 14px; z-index: 31;">
+				<div
+					style="overflow: hidden; height: 14px; width: 400px; border: 0px solid #52A8EC; border-radius: 0px; box-shadow: none;">
+					<a target="_self" href="StraitFever.html"><img height="14" width="400"
+							style="display: block; border-radius: 0px; border-width: 0;" title="" alt=""
+							src="files/straitfeverban.gif"></a></div>
+			</div>
+
+			<div id="element47"
+				style="position: absolute; top: 12997px; left: 392px; width: 436px; height: 239px; z-index: 29;">
+				<table cellspacing="0" border="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td colspan="6" bgcolor="#A85400"><img height="3" width="433" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=168&amp;g=84&amp;b=0">
+							</td>
+							<td><img height="3" width="3" border="0" alt="" style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetCornerGif&amp;w=3&amp;h=3&amp;r2=168&amp;g2=84&amp;b2=0&amp;r=51&amp;g=34&amp;b=17">
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="5" bgcolor="#A85400"><img height="233" width="3" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=168&amp;g=84&amp;b=0">
+							</td>
+							<td colspan="5" bgcolor="#633100"><img height="5" width="430" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=99&amp;g=49&amp;b=0">
+							</td>
+							<td rowspan="6" bgcolor="#332211"><img height="236" width="3" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=51&amp;g=34&amp;b=17">
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="4" bgcolor="#633100"><img height="228" width="5" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=99&amp;g=49&amp;b=0">
+							</td>
+							<td colspan="2" bgcolor="#332211"><img height="3" width="417" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=51&amp;g=34&amp;b=17">
+							</td>
+							<td><img height="3" width="3" border="0" alt="" style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetCornerGif&amp;w=3&amp;h=3&amp;r=168&amp;g=84&amp;b=0&amp;r2=51&amp;g2=34&amp;b2=17">
+							</td>
+							<td rowspan="4" bgcolor="#633100"><img height="228" width="5" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=99&amp;g=49&amp;b=0">
+							</td>
+						</tr>
+						<tr>
+							<td bgcolor="#332211"><img height="217" width="3" border="0" alt="" style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=51&amp;g=34&amp;b=17">
+							</td>
+							<td><img height="217" width="414" border="0" alt="" style="display: block;" src="/tp.gif">
+							</td>
+							<td rowspan="2" bgcolor="#A85400"><img height="220" width="3" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=168&amp;g=84&amp;b=0">
+							</td>
+						</tr>
+						<tr>
+							<td><img height="3" width="3" border="0" alt="" style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetCornerGif&amp;w=3&amp;h=3&amp;r=168&amp;g=84&amp;b=0&amp;r2=51&amp;g2=34&amp;b2=17">
+							</td>
+							<td bgcolor="#A85400"><img height="3" width="414" border="0" alt="" style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=168&amp;g=84&amp;b=0">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" bgcolor="#633100"><img height="5" width="420" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=99&amp;g=49&amp;b=0">
+							</td>
+						</tr>
+						<tr>
+							<td><img height="3" width="3" border="0" alt="" style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetCornerGif&amp;w=3&amp;h=3&amp;r2=168&amp;g2=84&amp;b2=0&amp;r=51&amp;g=34&amp;b=17">
+							</td>
+							<td colspan="5" bgcolor="#332211"><img height="3" width="430" border="0" alt=""
+									style="display: block;"
+									src="/~site/siteapps/shapes.action?CMD=GetRectangleGif&amp;r=51&amp;g=34&amp;b=17">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
 		</div>
 	</div>
@@ -1004,9 +1168,21 @@ t" align="center">
 		$(`a[aria-controls=${ariaControls}`).tab('show')
 		
 	</script> -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js" integrity="sha512-XdUZ5nrNkVySQBnnM5vzDqHai823Spoq1W3pJoQwomQja+o4Nw0Ew1ppxo5bhF2vMug6sfibhKWcNJsG8Vj9tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+		integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="main.js"></script>
+	<!-- MDBootstrap Datatables  -->
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+
 </body>
 
 

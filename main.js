@@ -1,6 +1,7 @@
 // user details 
 
 
+
 let bpiDefault = { change: '', code: '' };
 
 
@@ -67,7 +68,7 @@ Vue.component('vue-calculator', {
     methods: {
 
         bclick(event) {
-            this.$emit('clicked', this.inputValue)
+            this.$emit('clicked', {value : this.inputValue, bvalue: this.conversion})
         },
         getUpdatedPrice() {
             this.loading = true;
@@ -117,7 +118,7 @@ Vue.component('vue-calculator', {
                 this.value = Number(value);
             }
         },
-        isActive(){
+        isActive() {
             if (this.value === null) {
                 return true
             } else {
@@ -201,12 +202,13 @@ new Vue({
         lastname: null,
         email: null,
         amount: null,
-        donations: null
+        donators: null,
+        bvalue: null
     },
 
     // computed methods 
     computed: {
-
+      
         // compute list wallets for tabs 
         walletsList() {
             return this.cryptoWallets.map(w => {
@@ -218,57 +220,75 @@ new Vue({
 
     // custom methods 
     methods: {
-        getRecords(){
+        
+
+        getRecords() {
+
             axios.post('http://127.0.0.1:8080/ajax.php', {
-              request: 1
+                request: 1
             })
-            .then(function (response) {
-                console.log(response.data);
-              this.donations = response.data;
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        
-          },
-          addRecord: function(){
-            if(this.firstname != '' && this.lastname != '' && this.email != ''){
-              axios.post('http://127.0.0.1:8080/ajax.php', {
-                request: 2,
-                firstname: this.firstname,
-                lastname: this.lastname,
-                email: this.email,
-                amount: this.amount
-              })
-              .then((res) => {
-                this.getRecords()
-                var triggerEl = document.querySelector('#contact-tab');
-                var tab = new bootstrap.Tab(triggerEl)
-                tab.show();
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-            }else{
-              alert('Fill all fields.');
+                .then((res) => {
+                
+                    this.donators = res.data;
+                    
+                    $(document).ready(function() {
+                        $('#table').DataTable();})
+                    // let donators1 = res.data;
+                    // donators1.forEach(
+                    //     this.makeArray
+                    // );
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+        },
+        makeArray(item){
+            
+            this.donators.push(Object.values(item))
+        },
+        addRecord: function () {
+            if (this.firstname != '' && this.lastname != '' && this.email != '') {
+                axios.post('http://127.0.0.1:8080/ajax.php', {
+                    request: 2,
+                    firstname: this.firstname.charAt(0).toUpperCase() + this.firstname.slice(1),
+                    lastname: this.lastname.charAt(0).toUpperCase() + this.lastname.slice(1),
+                    email: this.email,
+                    amount: this.amount
+                })
+                    .then((res) => {
+                        this.getRecords()
+                        var triggerEl = document.querySelector('#contact-tab');
+                        var tab = new bootstrap.Tab(triggerEl)
+                        tab.show();
+                        this.firstname = '';
+                        this.lastname = '';
+                        this.email = '';
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            } else {
+                alert('Fill all fields.');
             }
-        
-          },
-          fclick(){
+
+        },
+        fclick() {
             var triggerEl = document.querySelector('#home-tab');
             var tab = new bootstrap.Tab(triggerEl)
             tab.show();
-          },
+        },
         // select active tab wallet 
         cclick(data) {
-            this.amountD = `$${data}`;
-            this.amount = data;
+            this.amountD = `$${data.value}`;
+            this.amount = data.value;
+            this.bvalue = data.bvalue;
             var triggerEl = document.querySelector('#profile-tab');
             var tab = new bootstrap.Tab(triggerEl)
             tab.show();
 
         },
-        
+
         selectWallet(symbol) {
             let wallet = this.cryptoWallets.filter(w => w.symbol === symbol).shift();
             if (!wallet) return;
@@ -301,10 +321,19 @@ new Vue({
 
 
 
+
     },
 
     // when component mounts 
-    mounted() {
+created() {
+     
+},
+  mounted() {
+        
         this.selectWallet(this.tab);
+       this.getRecords();
+        
+       
+      
     },
 });
