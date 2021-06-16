@@ -220,11 +220,10 @@ new Vue({
     // custom methods 
     methods: {
         allRecords(){
-            axios.get('/ajax.php', {
+            axios.post('http://127.0.0.1:8080/ajax.php', {
               request: 1
             })
             .then(function (response) {
-                console.log('ore');
                 console.log(response.data);
               this.donations = response.data;
             })

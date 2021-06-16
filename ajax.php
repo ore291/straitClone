@@ -16,7 +16,7 @@ $request = $data->request;
 
 // Fetch All records
 if($request == 1){
-  $userData = mysqli_query($con,"select * from users order by id desc");
+  $userData = mysqli_query($con,"select * from donations order by id desc");
 
   $response = array();
   while($row = mysqli_fetch_assoc($userData)){
