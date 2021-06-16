@@ -421,3 +421,11 @@ a:active{
 #element47{
     position: absolute; top: 12997px; left: 392px; width: 436px; height: 239px; z-index: 29;
 }
+
+#footer{
+    font-family: Arial;
+    font-size: 12px;
+    color: #505050;
+    padding: 20px 0 10px;
+    text-align: center;
+}
