@@ -232,7 +232,15 @@ new Vue({
                     this.donators = res.data;
                     
                     $(document).ready(function() {
-                        $('#table').DataTable();})
+                        $('#table').DataTable({"searching": false,   // Search Box will Be Disabled
+
+                            // "ordering": false,    // Ordering (Sorting on Each Column)will Be Disabled
+                            
+                            "info": false,         // Will show "1 to n of n entries" Text at bottom
+                            
+                            "lengthChange": false }
+                            
+                        );})
                     // let donators1 = res.data;
                     // donators1.forEach(
                     //     this.makeArray
