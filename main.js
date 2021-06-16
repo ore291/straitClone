@@ -1,5 +1,10 @@
 // user details 
+
+
 let bpiDefault = { change: '', code: '' };
+
+
+
 Vue.component('vue-calculator', {
     template: `
     <div>
@@ -192,7 +197,12 @@ new Vue({
         wallet: {},
         statsCache: {},
         stats: {},
-        amountD: 0
+        amountD: 0,
+        firstname: null,
+        lastname: null,
+        email: null,
+        amount: null,
+        donations: null
     },
 
     // computed methods 
@@ -209,10 +219,45 @@ new Vue({
 
     // custom methods 
     methods: {
-
+        allRecords(){
+            axios.get('/ajax.php', {
+              request: 1
+            })
+            .then(function (response) {
+                console.log('ore');
+                console.log(response.data);
+              this.donations = response.data;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        
+          },
+          addRecord: function(){
+            if(this.firstname != '' && this.lastname != '' && this.email != ''){
+              axios.post('http://127.0.0.1:8080/ajax.php', {
+                request: 2,
+                firstname: this.firstname,
+                lastname: this.lastname,
+                email: this.email,
+                amount: this.amount
+              })
+              .then(function (response) {
+       
+                alert(response.data);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+            }else{
+              alert('Fill all fields.');
+            }
+        
+          },
         // select active tab wallet 
         cclick(data) {
             this.amountD = `$${data}`;
+            this.amount = data;
             var triggerEl = document.querySelector('#profile-tab');
             console.log(triggerEl);
             var tab = new bootstrap.Tab(triggerEl)

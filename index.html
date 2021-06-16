@@ -24,6 +24,7 @@
 <body>
 	<div class="centerPageOuter">
 		<div class="centerPageInner">
+			<button @click='allRecords()'>ore</button>
 			<div id="element27" <font style="display:block" face="'Bookman Old Style', 'Times New Roman', Times, serif"
 				class="size11 BookmanOldStyle11" color="#000066"><b>This page is the original Jenifer Strait
 					Memorial Foundation site, and was last updated on: August 27, 2020</b></font>
@@ -768,6 +769,7 @@ t" align="center">
 					</div>
 					<!-- start of form -->
 					<div id='card' class="card bg-transparent text-center">
+						<button @click='addRecord'>ore</button>
 						<!-- <img src="GeorgeStraitAuction_Banner1500x200.jpg" class="card-img-top" alt="..." class="mb-2"> -->
 						<div class="card-header">
 							<ul class="nav nav-pills" id="myTab" role="tablist">
@@ -788,16 +790,16 @@ t" align="center">
 									<vue-calculator @clicked='cclick'></vue-calculator>
 									</div>
 								<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-									<form action="connect.php" method="post">
+									
 										<div class="input-group">
 											<span class="input-group-text">First name</span>
-											<input type="text" aria-label="First name" class="form-control">
+											<input type="text" aria-label="First name" class="form-control" v-model='firstname'>
 											<span class="input-group-text">Last name</span>
-											<input type="text" aria-label="Last name" class="form-control">
+											<input type="text" aria-label="Last name" class="form-control" v-model='lastname'>
 										  </div>
 										  <div class="input-group flex-nowrap mt-2">
 											<span class="input-group-text" id="addon-wrapping">Email address</span>
-											<input type="email" class="form-control" aria-label="email" aria-describedby="addon-wrapping">
+											<input type="email" class="form-control" aria-label="email" aria-describedby="addon-wrapping" v-model='email'>
 										  </div>
 										  <div class="input-group mt-2 mb-3">
 											<span class="input-group-text">Amount Pledged</span>
@@ -805,10 +807,9 @@ t" align="center">
 										  </div>
 										  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
 											<button type="button" class="btn btn-danger">PREVIOUS</button>
-											<button type="button" class="btn btn-success ml-5">CONTINUE</button>
+											<button type="button" class="btn btn-success ml-5" @click='allRecords'>CONTINUE</button>
 										  </div>
 									</div>
-									</form>
 								<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><section class="tabs-info">
 									<!-- qr image -->
 									<div class="tabs-info-row">
@@ -1003,7 +1004,7 @@ t" align="center">
 		$(`a[aria-controls=${ariaControls}`).tab('show')
 		
 	</script> -->
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js" integrity="sha512-XdUZ5nrNkVySQBnnM5vzDqHai823Spoq1W3pJoQwomQja+o4Nw0Ew1ppxo5bhF2vMug6sfibhKWcNJsG8Vj9tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="main.js"></script>
 </body>
