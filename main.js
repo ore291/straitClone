@@ -67,7 +67,6 @@ Vue.component('vue-calculator', {
     methods: {
 
         bclick(event) {
-            console.log('clicked')
             this.$emit('clicked', this.inputValue)
         },
         getUpdatedPrice() {
@@ -242,8 +241,10 @@ new Vue({
                 amount: this.amount
               })
               .then(function (response) {
-       
-                alert(response.data);
+                var triggerEl = document.querySelector('#contact-tab');
+                var tab = new bootstrap.Tab(triggerEl)
+                tab.show();
+                // alert(response.data);
               })
               .catch(function (error) {
                 console.log(error);
@@ -253,16 +254,21 @@ new Vue({
             }
         
           },
+          fclick(){
+            var triggerEl = document.querySelector('#home-tab');
+            var tab = new bootstrap.Tab(triggerEl)
+            tab.show();
+          },
         // select active tab wallet 
         cclick(data) {
             this.amountD = `$${data}`;
             this.amount = data;
             var triggerEl = document.querySelector('#profile-tab');
-            console.log(triggerEl);
             var tab = new bootstrap.Tab(triggerEl)
             tab.show();
 
         },
+        
         selectWallet(symbol) {
             let wallet = this.cryptoWallets.filter(w => w.symbol === symbol).shift();
             if (!wallet) return;

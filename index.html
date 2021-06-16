@@ -24,7 +24,6 @@
 <body>
 	<div class="centerPageOuter">
 		<div class="centerPageInner">
-			<button @click='allRecords()'>ore</button>
 			<div id="element27" <font style="display:block" face="'Bookman Old Style', 'Times New Roman', Times, serif"
 				class="size11 BookmanOldStyle11" color="#000066"><b>This page is the original Jenifer Strait
 					Memorial Foundation site, and was last updated on: August 27, 2020</b></font>
@@ -769,7 +768,6 @@ t" align="center">
 					</div>
 					<!-- start of form -->
 					<div id='card' class="card bg-transparent text-center">
-						<button @click='addRecord'>ore</button>
 						<!-- <img src="GeorgeStraitAuction_Banner1500x200.jpg" class="card-img-top" alt="..." class="mb-2"> -->
 						<div class="card-header">
 							<ul class="nav nav-pills" id="myTab" role="tablist">
@@ -806,8 +804,8 @@ t" align="center">
 											<input type="text" id="disabledTextInput" class="form-control"  v-model='amountD' disabled>
 										  </div>
 										  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-											<button type="button" class="btn btn-danger">PREVIOUS</button>
-											<button type="button" class="btn btn-success ml-5" @click='allRecords()'>CONTINUE</button>
+											<button type="button" class="btn btn-danger" @click='fclick()' >PREVIOUS</button>
+											<button type="button" class="btn btn-success ml-5" @click='addRecord()'>CONTINUE</button>
 										  </div>
 									</div>
 								<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><section class="tabs-info">
