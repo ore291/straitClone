@@ -20,7 +20,7 @@ Vue.component('vue-calculator', {
           </div>
         </div>
       </div>
-      <p><center>Enter Donation amount: </center></p>
+      <p class='text-dark text-capitalize fs-2 fw-bold bg-light rounded-pill '><center>Enter Donation amount: </center></p>
       <div class="d-flex row align-items-center justify-content-center ">
         <div class="col-sm-10 col-md-6  mb-5">
         <div class="input-group mb-3">
@@ -218,7 +218,7 @@ new Vue({
 
     // custom methods 
     methods: {
-        allRecords(){
+        getRecords(){
             axios.post('http://127.0.0.1:8080/ajax.php', {
               request: 1
             })
@@ -240,11 +240,11 @@ new Vue({
                 email: this.email,
                 amount: this.amount
               })
-              .then(function (response) {
+              .then((res) => {
+                this.getRecords()
                 var triggerEl = document.querySelector('#contact-tab');
                 var tab = new bootstrap.Tab(triggerEl)
                 tab.show();
-                // alert(response.data);
               })
               .catch(function (error) {
                 console.log(error);

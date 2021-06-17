@@ -120,6 +120,10 @@
 .container {
   margin-top: 10px;
   background-color: #fff;
+  background-image : url("donation.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   border-radius: 0.25rem;
   border: solid 1px darkgray;
 }
