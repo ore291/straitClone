@@ -32,7 +32,7 @@ body{
     position: relative;
     margin: 0 auto;
     text-align: left;
-    width: 1119px;
+    width: 85%;
 }
 a:link{
     color: #B91806;
@@ -55,6 +55,8 @@ a:active{
     height: 128px;
     z-index: 18;
 }
+
+
 #element92{
     position: absolute;
     top: 4px;
