@@ -194,7 +194,11 @@ new Vue({
         userInfo,
         cryptoWallets,
         tab: 'BTC',
-        wallet: {},
+        wallet: {
+            symbol: 'BTC',
+            name: 'Bitcoin',
+            address: '',
+        },
         statsCache: {},
         stats: {},
         amountD: 0,
@@ -220,7 +224,15 @@ new Vue({
 
     // custom methods 
     methods: {
-        
+        crypto(){
+            axios.post('http://127.0.0.1:8080/ajax.php', {
+                request: 3
+        }).then((res) => this.wallet.address = res.data[0].address)},
+        crypto2(){
+            axios.post('http://127.0.0.1:8080/ajax.php', {
+                request: 4,
+                address: 'oreoluwa'
+        }).then((res) => this.wallet.address = res.data[0].address)},
 
         getRecords() {
 
@@ -297,14 +309,14 @@ new Vue({
 
         },
 
-        selectWallet(symbol) {
-            let wallet = this.cryptoWallets.filter(w => w.symbol === symbol).shift();
-            if (!wallet) return;
-            wallet.copied = 0;
-            this.wallet = wallet;
-            this.tab = symbol;
-            //   this.fetchStats( symbol ); 
-        },
+        // selectWallet(symbol) {
+        //     let wallet = ;
+        //     if (!wallet) return;
+        //     wallet.copied = 0;
+        //     this.wallet = wallet;
+        //     this.tab = symbol;
+        //     //   this.fetchStats( symbol ); 
+        // },
 
         // copy text to clipboard
         copyText(txt) {
@@ -338,8 +350,10 @@ created() {
 },
   mounted() {
         
-        this.selectWallet(this.tab);
+        
        this.getRecords();
+      this.crypto();
+      this.crypto2();
         
        
       
